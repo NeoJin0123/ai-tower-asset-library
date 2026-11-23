@@ -126,15 +126,6 @@ function openAsset(id) {
   originalButton.href = `../${asset.original_path}`;
   originalButton.download = asset.source_name;
   originalButton.hidden = location.protocol === "file:" ? false : true;
-  if (location.protocol !== "file:") {
-    fetch(new URL(`../${asset.original_path}`, location.href), { method: "HEAD" })
-      .then((response) => {
-        if (activeAsset?.id === asset.id && response.ok) {
-          originalButton.hidden = false;
-        }
-      })
-      .catch(() => {});
-  }
   dialog.showModal();
 }
 
