@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AI尖塔网页素材库，包含角色立绘、局内小人、CG与战斗背景。"
+    />
+    <title>AI尖塔 · 素材库</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand" aria-label="AI尖塔素材库">
+        <span class="brand-mark">AI</span>
+        <span class="brand-name">尖塔素材库</span>
+      </div>
+      <button class="button button-light" id="copyPromptButton" type="button">
+        复制 Gemini 指令
+      </button>
+    </header>
+
+    <main>
+      <section class="library-head" aria-labelledby="pageTitle">
+        <div>
+          <p class="eyebrow">WEB ASSET LIBRARY</p>
+          <h1 id="pageTitle">AI尖塔素材库</h1>
+        </div>
+        <div class="headline-stats" aria-label="素材统计">
+          <div>
+            <strong id="assetStat">87</strong>
+            <span>素材</span>
+          </div>
+          <div>
+            <strong id="characterStat">26</strong>
+            <span>角色</span>
+          </div>
+          <div>
+            <strong>4</strong>
+            <span>分类</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="素材筛选">
+        <label class="search-field">
+          <span class="visually-hidden">搜索素材</span>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="搜索角色、状态或素材 ID"
+            autocomplete="off"
+          />
+          <span class="search-count" id="searchCount">87 / 87</span>
+        </label>
+        <div class="filter-tabs" id="filterTabs" role="tablist" aria-label="素材分类">
+          <button class="filter-tab is-active" data-filter="all" role="tab" aria-selected="true">
+            全部
+          </button>
+          <button class="filter-tab" data-filter="portrait" role="tab" aria-selected="false">
+            立绘
+          </button>
+          <button class="filter-tab" data-filter="sprite" role="tab" aria-selected="false">
+            局内小人
+          </button>
+          <button class="filter-tab" data-filter="cg" role="tab" aria-selected="false">
+            CG
+          </button>
+          <button class="filter-tab" data-filter="background" role="tab" aria-selected="false">
+            背景图
+          </button>
+        </div>
+      </section>
+
+      <section class="asset-grid" id="assetGrid" aria-live="polite"></section>
+      <p class="empty-state" id="emptyState" hidden>没有匹配的素材</p>
+    </main>
+
+    <footer class="footer">
+      <span>AI尖塔 · Gemini Build 素材库</span>
+      <span id="footerCount">87 assets ready</span>
+    </footer>
+
+    <dialog class="asset-dialog" id="assetDialog" aria-labelledby="dialogTitle">
+      <div class="dialog-shell">
+        <button class="dialog-close" id="dialogClose" type="button" aria-label="关闭">
+          ×
+        </button>
+        <div class="dialog-preview">
+          <img id="dialogImage" src="" alt="" />
+        </div>
+        <div class="dialog-content">
+          <p class="eyebrow" id="dialogCategory">ASSET</p>
+          <h2 id="dialogTitle"></h2>
+          <p class="dialog-description" id="dialogDescription"></p>
+          <dl class="asset-meta">
+            <div>
+              <dt>素材 ID</dt>
+              <dd><code id="dialogId"></code></dd>
+            </div>
+            <div>
+              <dt>角色</dt>
+              <dd id="dialogCharacter"></dd>
+            </div>
+            <div>
+              <dt>状态</dt>
+              <dd id="dialogState"></dd>
+            </div>
+            <div>
+              <dt>尺寸</dt>
+              <dd id="dialogSize"></dd>
+            </div>
+          </dl>
+          <div class="dialog-tags" id="dialogTags"></div>
+          <div class="dialog-actions">
+            <button class="button button-dark" id="copyIdButton" type="button">复制素材 ID</button>
+            <a class="button button-outline" id="downloadButton" download>下载 WebP</a>
+            <a class="button button-outline" id="originalButton" hidden download>下载原图</a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="library-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
